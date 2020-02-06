@@ -7,6 +7,10 @@
 // @require    https://cdn.bootcss.com/jquery/3.4.1/jquery.slim.min.js 
 // @require    https://cdn.bootcss.com/xlsx/0.15.1/xlsx.mini.min.js
 // @author     Gerrard_Mao
+// @version     1.0
+// @license      MIT
+// @supportURL https://github.com/yp51md/GreatNJUjiaowu
+// @updateURL https://github.com/yp51md/GreatNJUjiaowu/blob/master/jiaowu.user.js
 // ==/UserScript==
 (function () {
     'use strict';
@@ -54,7 +58,7 @@
     function downloadExcel(courses) {
         var wb = arr2workbook(courses);
         var blob = workbook2blob(wb);
-        var fileName = "成绩单.xlsx"
+        var fileName = "成绩单.xlsx";
         if (typeof blob == "object" && blob instanceof Blob) {
             blob = URL.createObjectURL(blob); // 创建blob地址
         }
@@ -62,7 +66,7 @@
         aLink.href = blob;
         aLink.download = fileName || "";
         aLink.click();
-        URL.revokeObjectURL(blob)
+        URL.revokeObjectURL(blob);
     }
     
     //学期
@@ -84,6 +88,8 @@
     var buttonText = '<input type="button" style="font-size:12px;border: #7b9ebd 1px solid;padding:1px;text-align:center;width:90px;" onClick="window.execute();" value="下载Excel"></input>';
     window.execute = function(){
         downloadExcel(courses);
-    }
+    };
     button.after(buttonText);
+
+
 })();
